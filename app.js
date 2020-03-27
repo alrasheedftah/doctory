@@ -25,7 +25,7 @@ mongoose.connect(config.DB, {
   useUnifiedTopology: true,
 });
 
-
+// mongoose.disconnect()
 // write logs to a file
 var accessLogStream = fs.createWriteStream(path.join(__dirname, 'public/access.log'), { flags: 'a' })
  
@@ -65,7 +65,7 @@ app.use((err, req, res) => {
   res.json({ana:"Inrenal Server Errors "});
 });
 
-app.listen(config.APP_PORT,()=>{
+app.listen(process.env.PORT || config.APP_PORT,()=>{
   
     console.log("Connection on   :")
 }); // Listen on port defined in environment
